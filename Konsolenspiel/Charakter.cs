@@ -8,4 +8,6 @@ public class Charakter
     public int Charisma { get; set; }
     public int Stealth { get; set; }
     public string Beschreibung { get; set; }
+
+  
 }
