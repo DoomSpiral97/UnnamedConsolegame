@@ -22,6 +22,7 @@ namespace Konsolengame
                 Console.WriteLine("2) Zur Kammer des Magisters");
                 Console.WriteLine("3) Zur den Ruinen der Trauer");
                 Console.WriteLine("4) Zur Drachenhöhle");
+                Console.WriteLine("5) Inventar anzeigen");
                 Console.WriteLine("0) Spiel beenden");
                 string? eingabe = Console.ReadLine();
 
@@ -29,7 +30,7 @@ namespace Konsolengame
                 {
                     case "1":
                     {
-                        var encounter = new Ruinenencounter();
+                        var encounter = new WaldEncounter();
                         bool waldGeschafft = encounter.StartEncounter(spieler); // Gegner kommt aus GetGegner()
 
                         if (waldGeschafft)
@@ -47,7 +48,7 @@ namespace Konsolengame
                     case "2":
                     {
                         var encounter = new Stadtencounter();
-                        bool stadtGeschafft = encounter.StartEncounter(spieler); // Gegner kommt aus GetGegner()
+                        bool stadtGeschafft = encounter.StartEncounter(spieler); 
 
                         if (stadtGeschafft)
                         {
@@ -64,7 +65,7 @@ namespace Konsolengame
                     case "3":
                     {
                         var encounter = new Ruinenencounter();
-                        bool ruineGeschafft = encounter.StartEncounter(spieler); // Gegner kommt aus GetGegner()
+                        bool ruineGeschafft = encounter.StartEncounter(spieler); 
 
                         if (ruineGeschafft)
                         {
@@ -82,21 +83,35 @@ namespace Konsolengame
                     }
                     case "4":
                     {
-                        var encounter = new Drachenencounter();
-                        bool dracheGeschafft = encounter.StartEncounter(spieler); 
-
-                        if (dracheGeschafft)
+                        if (spieler.Inventar.Contains(Items.Kristall) &&
+                            spieler.Inventar.Contains(Items.Schild) &&
+                            spieler.Inventar.Contains(Items.Amulett))
                         {
-                            Console.WriteLine(
-                                "Du kehrst erfolgreich in die Stadt zurück mit dem SChatz des Drachen in deinem Beutel");
+                            var encounter = new Drachenencounter();
+                            bool dracheGeschafft = encounter.StartEncounter(spieler);
 
-                            spieler.ItemHinzufügen(Items.Kristall);
+                            if (dracheGeschafft)
+                            {
+                                Console.WriteLine(
+                                    "Du kehrst erfolgreich in die Stadt zurück mit dem Schatz des Drachen in deinem Beutel");
+                                // Optional: weitere Belohnung
+                            }
+                            else
+                            {
+                                Console.WriteLine("Niedergeschlagen kehrst du in die Stadt zurück...");
+                            }
                         }
                         else
                         {
-                            Console.WriteLine("Niedergeschlagen kehrst du in die Stadt zurück...");
+                            Console.WriteLine(
+                                "Du stehst vor dem Drachen und merkst, dass du keine Chance hast. Du rennst zurück in die sichere Stadt.");
                         }
 
+                        break;
+                    }
+
+                    case "5":
+                    {spieler.InventarAnzeigen();
                         break;
                     }
                     case "0":
