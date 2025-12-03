@@ -9,7 +9,7 @@ public class Hilfsmethoden
 
     public static void HappyEnd()
     {
-        Console.WriteLine("You Won");
+        Console.WriteLine("Du hast das Abenteuer gemeistert, mehr Quests gibt es mit dem Addon * Eisklauen von Sommerfell* für nur 12,99€");
     }
 
     public static Spieler Charakterwahl()
