@@ -70,13 +70,16 @@ public abstract class Encounter
     {
         Console.WriteLine();
         Console.WriteLine($"{gegner.Name} greift dich an!");
+        Thread.Sleep(1000);
 
         while (spieler.HP > 0 && gegner.HP > 0)
         {
             // Spieler greift an
             int schadenSpieler = spieler.Stärke;
             gegner.HP -= schadenSpieler;
+            Console.ResetColor();
             Console.WriteLine($"Du triffst {gegner.Name} für {schadenSpieler} Schaden. Gegner HP: {gegner.HP}");
+            Thread.Sleep(1000);
 
             if (gegner.HP <= 0)
             {
@@ -87,12 +90,19 @@ public abstract class Encounter
             // Gegner greift an
             int schadenGegner = gegner.Stärke;
             spieler.HP -= schadenGegner;
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"{gegner.Name} trifft dich für {schadenGegner} Schaden. Deine HP: {spieler.HP}");
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine($"{gegner.Name} verflucht dich: {gegner.Beleidigung}");
+            Console.ResetColor();
+            Thread.Sleep(1000);
 
             if (spieler.HP <= 0)
-            {
+            {   Thread.Sleep(1000);
+                Console.ForegroundColor=ConsoleColor.Red;
                 Console.WriteLine("Du brichst verwundet zusammen...");
+                Console.ResetColor();
                 return false;
             }
         }
@@ -112,13 +122,15 @@ public abstract class Encounter
         Console.WriteLine($"Wurf: {wurf} + Charisma {spieler.Charisma} = {probe}");
 
         if (probe >= 15)
-        {
+        {Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"{gegner.Name} scheint dir zu glauben.");
+            Console.ResetColor();
             Überredenstext();
             return true;
         }
-
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine($"{gegner.Name} lässt sich nicht überzeugen!");
+        Console.ResetColor();
         return false;
     }
 
@@ -135,16 +147,17 @@ public abstract class Encounter
         Console.WriteLine($"Wahrnehmung des Gegners: {gegner.Wahrnehmnung}");
 
         if (stealthWert >= gegner.Wahrnehmnung)
-        {
+        {Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Du verschwindest lautlos im Schatten. Der Gegner bemerkt dich nicht.");
+            Console.ResetColor();
             return true;
         }
-
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine($"Ein Geräusch verrät dich – {gegner.Name} bemerkt dich!");
+        Console.ResetColor();
         return false;
     }
 
     protected abstract void ShowQuestSuccess();
 }
 
-//asdf
