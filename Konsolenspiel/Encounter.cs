@@ -146,3 +146,5 @@ public abstract class Encounter
 
     protected abstract void ShowQuestSuccess();
 }
+
+//asdf
