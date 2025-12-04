@@ -4,12 +4,11 @@ public class Ruinenencounter : Encounter
 {
     private readonly Gegner gegner = new Gegner
     {
-        Stärke = 22,
+        Stärke = 16,
         Beschreibung = "Ein Skelett",
-        Charisma = 0,
-        HP = 300,
+        HP = 110,
         MaximaleHP = 10,
-        Stealth = 2,
+        Wahrnehmnung = 19,
         Name = "Skelelol",
         Beleidigung  = $"*Das Skelett klappert drohend mit seinem Unterkiefer und zeigt mit einem knochigen Finger auf dich.*",
         SneakFail    = $"*Ein Knochen knackt laut unter deinem Stiefel.* \"Du glaubst wohl, ich hab keine Ohren mehr?\", klappert Knochenkarl spöttisch.",

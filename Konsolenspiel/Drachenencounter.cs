@@ -7,10 +7,8 @@ public class Drachenencounter :Encounter
     {
         Stärke = 22,
         Beschreibung = "Ein Drache",
-        Charisma = 0,
-        HP = 300,
+        HP = 200,
         MaximaleHP = 10,
-        Stealth = 2,
         Name = "Hurdurrr",
         Wahrnehmnung = 2,
         Beleidigung = $"Der Drache spuckt Feuer "

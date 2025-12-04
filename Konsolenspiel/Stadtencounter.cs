@@ -5,18 +5,20 @@ public class Stadtencounter : Encounter
     {
         private readonly Gegner gegner = new Gegner
         {
-            Stärke = 22,
+            Stärke = 14,
             Beschreibung = "Ein missmutiger Wachmann in der Livree des Magisters",            
             Charisma = 0,
-            HP = 300,
-            MaximaleHP = 10,
+            HP = 100,
+            MaximaleHP = 100,
             Stealth = 2,
             Name = "Sigur Sigurdson",
-            Wahrnehmnung = 2,
+            Wahrnehmnung = 25,
             Beleidigung = $"Der Magistrat wird dich finden du Schmutz!",
             SneakFail    = $"Du stolperst über eine lose Bordsteinkante. „Sehr unauffällig“, knurrt die Wache. „Willst du nicht gleich ein Schild hochhalten, auf dem ‘Einbrecher’ steht?“",
             KampfFail    = $"Ein harter Schlag seines Knüppels trifft dich an der Schläfe. „Nächster Möchtegern-Held erledigt“, murrt die Wache, während dir die Lichter ausgehen.",
-            ÜberredenFail = $"Du erwähnst die Geschichte aus der Taverne – und siehst nur, wie seine Ader an der Schläfe pulsiert.\n„Du redest über MEINE Frau?“ faucht er, verpasst dir eine und schleudert dich die Treppe hinunter."
+            ÜberredenFail = 
+                $"Du räusperst dich wichtig und setzt an: „Also… deine Frau steht gerade besoffen in der Taverne auf dem Tresen, oberkörperfrei, und singt die Ballade von Mendizil Disi…\nDie Wache starrt dich an, blinzelt einmal langsam und verengt dann die Augen.\n„Netter Versuch“, knurrt er, „meine Frau ist seit drei Tagen bei ihrer Mutter auf dem Land.“\nBevor du reagieren kannst, setzt es einen sauberen Schlag mit dem Knüppel, und du wirst unsanft die Treppe hinunter vor das Haus befördert.",
+
         };
         
 
@@ -64,34 +66,38 @@ public class Stadtencounter : Encounter
                           "und senkst die Stimme zu einem verschwörerischen Flüstern.");
         Console.ReadKey();
 
-        Console.WriteLine("\n„Hör zu“, beginnst du, „ich bin nicht hier, um Ärger zu machen.\n" +
-                          "Ich bin hier, um dem Magister ein kleines… gesellschaftliches Problem zu ersparen.“");
+        Console.WriteLine("\n„Ganz ruhig“, beginnst du, „ich bin nicht hier, um in dein Protokoll zu landen.\n" +
+                          "Ich bin hier, um deine Ehe zu retten.“");
         Console.ReadKey();
 
-        Console.WriteLine("\nDie Wache runzelt die Stirn, aber du machst weiter:");
+        Console.WriteLine("\nDie Stirn der Wache legt sich in Falten, doch er hält inne.");
         Console.ReadKey();
 
-        Console.WriteLine("\n„Warst du gestern in der Taverne? Ich frage nur,\n" +
-                          "weil dort eine Frau sehr laut erzählt hat, wie sie sich vor versammelter Runde entblößt hat…\n" +
-                          "und dass ihr ‚hochansehnlicher Ehemann in Dienstuniform‘ NICHT amüsiert war.“");
+        Console.WriteLine("\n„Weißt du, was gerade in der Taverne los ist?“ fragst du leise.\n" +
+                          "„Deine Frau steht AUF dem Tresen, sturzbetrunken und oberkörperfrei,\n" +
+                          "und brüllt die Ballade von Mendizil Disi in die Menge.“");
         Console.ReadKey();
 
-        Console.WriteLine("\nDer Wachmann wird kreidebleich. Seine Finger verkrampfen sich am Knauf seines Knüppels,\n" +
-                          "doch nicht in deine Richtung.");
+        Console.WriteLine("\nDie Farbe weicht aus seinem Gesicht, dann schießt sie in einem ungesunden Rot zurück.\n" +
+                          "Seine Finger verkrampfen sich um den Knüppel, diesmal eindeutig nicht deinetwegen.");
         Console.ReadKey();
 
-        Console.WriteLine("\n„Wenn der Magister erfährt, dass seine Wache in so einer Geschichte vorkommt…“,\n" +
-                          "setzt du nach und lässt den Satz bewusst offen im Raum hängen.");
+        Console.WriteLine("\n„Jeder nennt dabei ihren Namen. Und deiner fällt nebenbei auch.\n" +
+                          "Mit Dienstgrad“, fügst du hinzu, „laut genug, dass es bis zum Magister durchhallen könnte.“");
         Console.ReadKey();
 
-        Console.WriteLine("\nEin langer Moment vergeht, dann stößt er einen frustrierten Fluch aus,\n" +
+        Console.WriteLine("\nEin langer Moment vergeht, dann stößt er einen halb gewürgten Fluch aus,\n" +
                           "reißt den Helm vom Kopf und stopft ihn sich unter den Arm.");
         Console.ReadKey();
 
-        Console.WriteLine("\n„Weißt du was? Ich war nie hier. Mach, was du willst“, knurrt er\n" +
-                          "und stapft die Straße hinunter, während er unverständliche Dinge über Ehe, Lohn\n" +
-                          "und den Magister vor sich hinbrummt.");
+        Console.WriteLine("\n„Verdammt… ich hab für heute Feierabend“, knurrt er.\n" +
+                          "„Wenn jemand fragt, war ich NIE hier.“");
+        Console.ReadKey();
+
+        Console.WriteLine("\nOhne dich eines weiteren Blickes zu würdigen,\n" +
+                          "stürmt er die Straße hinunter, direkt in Richtung Taverne.");
     }
+
 
 
     protected override Gegner GetGegner()
@@ -122,7 +128,7 @@ public class Stadtencounter : Encounter
                       "die sich auf seinem Schreibtisch türmen.");
     Console.ReadKey();
 
-    Console.WriteLine("\nEin einzelnes Kerzenlicht reicht, um aus Papier ein Fanal zu machen:\n" +
+    Console.WriteLine("\nEin einzelnes Kerzenlicht reicht, um aus Papier ein Inferno zu machen:\n" +
                       "Flammen greifen nach den Dokumenten, kriechen über die Tischkante\n" +
                       "und springen auf die schweren Vorhänge über.");
     Console.ReadKey();

@@ -4,14 +4,12 @@ public class WaldEncounter : Encounter
 {
     private readonly Gegner gegner = new Gegner
     {
-        Stärke = 22,
+        Stärke = 10,
         Beschreibung = "Ein fieser Goblin",
         Charisma = 0,
-        HP = 300,
-        MaximaleHP = 10,
-        Stealth = 2,
+        HP = 85,
         Name = "Groff der Brecher",
-        Wahrnehmnung = 2,
+        Wahrnehmnung = 22,
         Beleidigung = $"Ich werde dich zu Wurst verarbeiten!",
         SneakFail = $"Ha! Dacht’ wohl, ich seh dich nicht, was? Du schleichst so laut wie ein betrunkener Ochse!",
         KampfFail = $"Zu langsam, Mensch! Groff der Brecher macht aus dir heute noch Fußabtreter!",        

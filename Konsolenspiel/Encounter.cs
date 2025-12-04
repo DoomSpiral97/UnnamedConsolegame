@@ -69,54 +69,117 @@ public abstract class Encounter
     }
 
     // Standard-Kampflogik für alle Encounter
-    protected virtual bool Fight(Spieler spieler, Gegner gegner)
+  protected virtual bool Fight(Spieler spieler, Gegner gegner)
+{
+    Random random = new Random();
+
+    Console.WriteLine();
+    Console.ForegroundColor = ConsoleColor.Yellow;
+    Console.WriteLine($"{gegner.Name} stellt sich dir zum Kampf!");
+    Console.ResetColor();
+    Console.ReadKey();
+
+    while (spieler.HP > 0 && gegner.HP > 0)
     {
-        Console.WriteLine();
-        Console.WriteLine($"{gegner.Name} greift dich an!");
-        Thread.Sleep(1000);
+        // === SPIELER-RUNDE ===
+        Console.ForegroundColor = ConsoleColor.Cyan;
+        Console.WriteLine($"\n--- Deine Runde ---");
+        Console.ResetColor();
 
-        while (spieler.HP > 0 && gegner.HP > 0)
+        int wurfSpieler = random.Next(1, 21); // d20
+        int attackSpieler = wurfSpieler + spieler.Stärke;
+        
+        Console.WriteLine($"Du würfelst: d20={wurfSpieler} + Stärke={spieler.Stärke} = {attackSpieler}");
+        Console.ReadKey();
+
+        if (wurfSpieler == 20)
         {
-            // Spieler greift an
-            int schadenSpieler = spieler.Stärke;
-            gegner.HP -= schadenSpieler;
-            Console.ResetColor();
-            Console.WriteLine($"Du triffst {gegner.Name} für {schadenSpieler} Schaden. Gegner HP: {gegner.HP}");
-            Thread.Sleep(1000);
+            // Kritischer Treffer
+            int schaden = spieler.Stärke * 2;
+            gegner.HP -= schaden;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"KRITISCHER TREFFER! Du verursachst {schaden} Schaden!");
+            Console.WriteLine($"Gegner HP: {gegner.HP}");
+        }
+        else if (attackSpieler >= 12) // Treffer-Schwelle
+        {
+            int schaden = random.Next(1, spieler.Stärke + 1); // 1dStärke
+            gegner.HP -= schaden;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($"Treffer! Du verursachst {schaden} Schaden.");
+            Console.WriteLine($"Gegner HP: {gegner.HP}");
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine("Verfehlt!");
+        }
+        Console.ResetColor();
+        Console.ReadKey();
 
-            if (gegner.HP <= 0)
-            {
-                Console.WriteLine($"{gegner.Name} geht zu Boden!");
-                return true;
-            }
-
-            // Gegner greift an
-            int schadenGegner = gegner.Stärke;
-            spieler.HP -= schadenGegner;
-            
-            Console.WriteLine($"{gegner.Name} trifft dich für {schadenGegner} Schaden. Deine HP: {spieler.HP}");
+        if (gegner.HP <= 0)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"\n{gegner.Name} geht zu Boden!");
             Console.ResetColor();
-            Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine($"{gegner.Name} verflucht dich: {gegner.Beleidigung}");
-            Console.ResetColor();
-            Thread.Sleep(1000);
-
-            if (spieler.HP <= 0)
-            {   Thread.Sleep(1000);
-                Console.ForegroundColor=ConsoleColor.Red;
-                Console.WriteLine($"{gegner.KampfFail} ");
-                Console.WriteLine("Du brichst verwundet zusammen...");
-                Console.WriteLine("Hier endet deine Reise...");
-                Console.ResetColor();
-                GameOverBild();
-                Console.WriteLine("");
-                Console.ResetColor();
-                Environment.Exit(0);
-            }
+            return true;
         }
 
-        return spieler.HP > 0;
+        // === GEGNER-RUNDE ===
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine($"\n--- {gegner.Name}s Runde ---");
+        Console.ResetColor();
+
+        int wurfGegner = random.Next(1, 21); // d20
+        int attackGegner = wurfGegner + gegner.Stärke;
+        
+        Console.WriteLine($"{gegner.Name} würfelt: d20={wurfGegner} + Stärke={gegner.Stärke} = {attackGegner}");
+        Console.ReadKey();
+
+        if (wurfGegner == 20)
+        {
+            // Kritischer Treffer
+            int schaden = gegner.Stärke * 2;
+            spieler.HP -= schaden;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{gegner.Name} landet KRITISCHEN TREFFER! {schaden} Schaden!");
+            Console.WriteLine($"Deine HP: {spieler.HP}");
+        }
+        else if (attackGegner >= 12) // Treffer-Schwelle
+        {
+            int schaden = random.Next(1, gegner.Stärke + 1); // 1dStärke
+            spieler.HP -= schaden;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{gegner.Name} trifft! {schaden} Schaden.");
+            Console.WriteLine($"Deine HP: {spieler.HP}");
+            
+            // Beleidigung nach Treffer
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine($"{gegner.Name} verflucht dich: {gegner.Beleidigung}");
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine($"{gegner.Name} verfehlt!");
+        }
+        Console.ResetColor();
+        Console.ReadKey();
+
+        if (spieler.HP <= 0)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"\n{gegner.KampfFail}");
+            Console.WriteLine("Du brichst verwundet zusammen...");
+            Console.WriteLine("Hier endet deine Reise...");
+            Console.ResetColor();
+            GameOverBild();
+            Environment.Exit(0);
+        }
     }
+
+    return spieler.HP > 0;
+}
+
 
     // Standard-Überreden
     protected virtual bool TryPersuade(Spieler spieler, Gegner gegner)
