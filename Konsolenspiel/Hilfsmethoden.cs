@@ -6,6 +6,23 @@ public class Hilfsmethoden
     {
         Console.WriteLine("Wilkommen");
     }
+    
+    public static string Questboard()
+    {
+        Console.WriteLine();
+        Console.WriteLine("Du bist in der Stadt.");
+        Console.WriteLine("Wohin möchtest du gehen?");
+        Console.WriteLine("1) In den Wald");
+        Console.WriteLine("2) Zur Kammer des Magisters");
+        Console.WriteLine("3) Zu den Ruinen der Trauer");
+        Console.WriteLine("4) Zur Drachenhöhle");
+        Console.WriteLine("I) Inventar anzeigen");
+        Console.WriteLine("6) Stadt erkunden");
+        Console.WriteLine("0) Spiel beenden");
+        Console.Write("Deine Wahl: ");
+
+        return Console.ReadLine();
+    }
 
     public static void HappyEnd()
     {
@@ -39,6 +56,9 @@ public class Hilfsmethoden
                     Charisma = 5,
                     Stealth = 3
                 };
+                Console.WriteLine(
+                    $"Du hast {spieler.Beschreibung} gewählt. Deine Stats sind:\n" +
+                    $"Charisma: {spieler.Charisma}, Stärke: {spieler.Stärke}, Stealth: {spieler.Stealth}");
                 return spieler;
             }
             else if (input == "2")
@@ -53,6 +73,9 @@ public class Hilfsmethoden
                     Charisma = 20,
                     Stealth = 10
                 };
+                Console.WriteLine(
+                    $"Du hast {spieler.Beschreibung} gewählt. Deine Stats sind:\n" +
+                    $"Charisma: {spieler.Charisma}, Stärke: {spieler.Stärke}, Stealth: {spieler.Stealth}");
                 return spieler;
             }
             else if (input == "3")
@@ -67,6 +90,9 @@ public class Hilfsmethoden
                     Charisma = 10,
                     Stealth = 20
                 };
+                Console.WriteLine(
+                    $"Du hast {spieler.Beschreibung} gewählt. Deine Stats sind:\n" +
+                    $"Charisma: {spieler.Charisma}, Stärke: {spieler.Stärke}, Stealth: {spieler.Stealth}");
                 return spieler;
             }
             else

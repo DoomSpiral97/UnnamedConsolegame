@@ -3,7 +3,7 @@ namespace Konsolengame;
 public abstract class Encounter
 {
     protected readonly Random Random = new Random();
-    public abstract void ShowIntro();
+    public abstract void ShowIntro();       // Wird alles in abgeleiteten Klassen befüllt
     public abstract void Überredenstext();
     public abstract void PortraitAnsehen();
     public abstract void GameOverBild();

@@ -9,24 +9,12 @@ namespace Konsolengame
             Hilfsmethoden.Begrüßung();
             Spieler spieler = Hilfsmethoden.Charakterwahl();
 
-            Console.WriteLine(
-                $"Du hast {spieler.Beschreibung} gewählt. Deine Stats sind:\n" +
-                $"Charisma: {spieler.Charisma}, Stärke: {spieler.Stärke}, Stealth: {spieler.Stealth}");
+            
 
             while (spielLaeuft)
             {
-                Console.WriteLine();
-                Console.WriteLine("Du bist in der Stadt.");
-                Console.WriteLine("Wohin möchtest du gehen?");
-                Console.WriteLine("1) In den Wald");
-                Console.WriteLine("2) Zur Kammer des Magisters");
-                Console.WriteLine("3) Zur den Ruinen der Trauer");
-                Console.WriteLine("4) Zur Drachenhöhle");
-                Console.WriteLine("5) Inventar anzeigen");
-                Console.WriteLine("6) Stadt erkunden");
-                
-                Console.WriteLine("0) Spiel beenden");
-                string? eingabe = Console.ReadLine();
+
+                string? eingabe = Hilfsmethoden.Questboard();
 
                 switch (eingabe)
                 {
@@ -112,8 +100,10 @@ namespace Konsolengame
                         break;
                     }
 
-                    case "5":
+                    case "I":
                     {spieler.InventarAnzeigen();
+                        Console.WriteLine("Drücke eine Taste um zurückzukehren");
+                        Console.ReadKey();
                         break;
                     }
                     case "6":

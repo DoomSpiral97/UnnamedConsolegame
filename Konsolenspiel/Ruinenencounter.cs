@@ -2,7 +2,7 @@ namespace Konsolengame;
 
 public class Ruinenencounter : Encounter
 {
-    private readonly Skelett _skelett = new Skelett
+    private readonly Skelett skelett = new Skelett
     {
         Stärke = 22,
         Beschreibung = "Ein Skelett",
@@ -38,7 +38,7 @@ public class Ruinenencounter : Encounter
 
     protected override Charakter GetGegner()
     {
-        return _skelett;
+        return skelett;
     }
 
     protected override void ShowQuestSuccess()
