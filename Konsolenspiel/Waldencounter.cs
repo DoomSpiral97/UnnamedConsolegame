@@ -23,21 +23,14 @@ public class WaldEncounter : Encounter
         Console.WriteLine("Der Pfad aus der Stadt führt dich zwischen verwitterten Feldern hindurch,\n" +
                           "bis das Pflaster endet und nur noch feuchte Erde unter deinen Stiefeln nachgibt.");
         Console.ReadKey();
-
         Console.WriteLine("\nMit jedem Schritt werden die Bäume dichter, ihre Kronen verschlingen das Licht\n" +
                           "wie gierige Münder.");
-
         Console.ReadKey();
-
         Console.WriteLine("\nDer Wind verfängt sich in knorrigen Ästen, die wie Finger über dein Gepäck kratzen.");
-
         Console.ReadKey();
-
         Console.WriteLine("\nGerade als du glaubst, allein zu sein, raschelt es heftig im Unterholz –\n" +
-                          "und ein Goblin mit schiefem Lederhelm und viel zu großem Speer springt auf den Weg.");
-
+                          "und ein Goblin mit schiefem Lederhelm und viel zu großem Speer springt auf den Weg."); 
         Console.ReadKey();
-
         Console.WriteLine("\nMit einem kreischenden Lachen stellt er sich breitbeinig vor dich,\n" +
                           "als wäre er der König dieses Waldes.");
     }
@@ -102,8 +95,4 @@ public class WaldEncounter : Encounter
         Console.WriteLine("\nDer Wald scheint aufzuseufzen – als hätte jemand einen alten Fluch gelöst.\n" +
                           "Mit deinem neuen Fund machst du dich auf den Weg zurück zur Stadt.");
     }
-
-
-    
- 
 }

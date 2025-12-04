@@ -9,7 +9,6 @@ public class Quests
 
         if (waldGeschafft)
         {
-            
             spieler.ItemHinzufügen(Items.Amulett);
         }
         else
@@ -25,8 +24,6 @@ public class Quests
 
         if (stadtGeschafft)
         {
-            Console.WriteLine("Du hast das Schild aus der Kammer des Magisters gestohlen.");
-                            
             spieler.ItemHinzufügen(Items.Schild);
         }
         else
@@ -42,9 +39,6 @@ public class Quests
 
         if (ruineGeschafft)
         {
-            Console.WriteLine(
-                "Du kehrst erfolgreich in die Stadt zurück mit dem Kristall sicher in deinem Beutel");
-
             spieler.ItemHinzufügen(Items.Kristall);
         }
         else
