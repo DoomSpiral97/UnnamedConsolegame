@@ -26,5 +26,7 @@ public class Spieler : Charakter
         {
             Console.WriteLine(i.Name);
         }
+        Console.WriteLine("Drücke eine Taste um zurückzukehren");
+        Console.ReadKey();
     }
 }
