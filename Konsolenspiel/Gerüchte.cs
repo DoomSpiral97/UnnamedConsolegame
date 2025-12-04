@@ -20,16 +20,36 @@ public class Gerüchte
 
         Console.WriteLine("Du probierst interessanten Tratsch aufzuschnappen...");
         int wurf = _random.Next(1, 100);
-        if (wurf > 80)
+        if (wurf > 69)
         {
             Console.WriteLine("Du hörst nichts sonderlich spannendes... ");
             return;
         }
         else
         {
-            int index = _random.Next(alleGeruechte.Count);
-            string gerücht = alleGeruechte[index];
-            Console.WriteLine($"Du lauscht einem Interessanten Gespräch:\n {gerücht}");
+            var unbekannteGerÜchte = new List<string>();
+
+            foreach (var g in alleGeruechte)                // Perplexity Hilfe
+            {
+                if (!spieler.BekannteGeruechte.Contains(g))
+                {
+                    unbekannteGerÜchte.Add(g);
+                }
+            }
+            
+            if (unbekannteGerÜchte.Count == 0)
+            {
+                Console.WriteLine("Du kennst bereits alle Gerüchte in dieser Stadt.");
+                return;
+            }
+
+            int index = _random.Next(unbekannteGerÜchte.Count);
+            string gerücht = unbekannteGerÜchte[index];
+
+            Console.WriteLine($"Du hörst ein neues Gerücht: \"{gerücht}\"");
+
+            // Im Spieler vermerken
+            spieler.BekannteGeruechte.Add(gerücht);
         }
     }
     
