@@ -193,18 +193,21 @@ public abstract class Encounter
         Console.WriteLine($"Wurf: {wurf} + Charisma {spieler.Charisma} = {probe}");
 
         if (probe >= 15)
-        {Console.ForegroundColor = ConsoleColor.Green;
+        { Überredenstext();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Erfolg!");
             Console.ResetColor();
-            Überredenstext();
             return true;
         }
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Versagt");
-        Console.ResetColor();
-        Console.WriteLine($"{gegner.ÜberredenFail} ");
-        
-        return false;
+
+        else
+        {
+            Console.WriteLine($"{gegner.ÜberredenFail} ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Versagt");
+            Console.ResetColor();
+            return false;
+        }
     }
 
     // Standard-Schleichen
@@ -225,11 +228,14 @@ public abstract class Encounter
             Console.ResetColor();
             return true;
         }
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine($"Versagt");
-        Console.ResetColor();
-        Console.WriteLine($"{gegner.SneakFail} ");
-        return false;
+        else
+        { 
+            Console.WriteLine($"{gegner.SneakFail} ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Versagt");
+            Console.ResetColor();
+            return false;
+        }
     }
 
     
