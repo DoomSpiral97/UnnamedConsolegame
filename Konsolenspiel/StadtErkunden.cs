@@ -45,7 +45,6 @@ public static class StadtErkunden
 
     private static void BesuchTempel(Spieler spieler)
     {
-        // Hier dann switchcase mit verschiedenen optionen, sprechen, heilen, gerüchte, Tempel ansehen
         bool inTempel = true;
         while (inTempel)
         {
@@ -96,11 +95,54 @@ public static class StadtErkunden
         Gerüchte.GerüchteHören(spieler);
     }
 
-    private static void BesucheBar(Spieler spieler)     // hier eine Liste mit textevents und daraus random picken, evtl kampf bei streitigkeit?
+    private static void
+        BesucheBar(Spieler spieler) // hier eine Liste mit textevents und daraus random picken, evtl kampf bei streitigkeit?
     {
-        Console.WriteLine("In der Bar ist es laut und verraucht. Du trinkst einen kräftigen Schluck.");
-        
-        
-        
+        bool inBar = true;
+        while (inBar)
+        {
+            Console.WriteLine("Du betrittst die verrauchte Bar ");
+            Console.WriteLine("1.Ein Bier Bestellen");
+            Console.WriteLine("2.Zimmer nehmen");
+            Console.WriteLine("3. Umschauen");
+            Console.WriteLine("0.Bar verlassen");
+            string eingabe = Console.ReadLine();
+
+            switch (eingabe)
+            {
+                case "1":
+                    if (spieler.Inventar.Contains(Items.Schild))
+                    {
+                        Console.WriteLine(
+                            "Du gehst an die Bar, wirst angerempelt. Bruder von sigur sigurdson will stress");
+                        //Quests.BarQuestBruder(spieler); Muss angelegt werden
+                    }
+                    else
+                    {
+                        Console.WriteLine("Du trinkst Bier. Es schmeckt nicht.");
+                        spieler.HP -= 20;
+                    }
+
+                    break;
+
+                case "2":
+                    Console.WriteLine("Du nimmst dier ein Zimmer und ruhst dich aus");
+                    spieler.HP += 20;
+                    break;
+
+                case "3":
+                    Console.WriteLine("Asci Bar Platzhalter");
+                    break;
+
+                case "0":
+                    Console.WriteLine("Du verlässt die Bar, deine Kleidung riecht nach Rauch ");
+                    inBar = false;
+                    break;
+
+                default:
+                    Console.WriteLine("Ungültige Eingabe.");
+                    break;
+            }
+        }
     }
 }
